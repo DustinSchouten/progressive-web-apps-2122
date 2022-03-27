@@ -1,0 +1,12 @@
+<%- include('./partials/head') %>
+<h2 class="choose_quote_text">Kies een quote uit het overzicht:</h2>
+<%- include('./partials/quote_reference_head') %>
+<% data.forEach(function(quote,idx) { %>
+    
+    <a class="quote_reference" href="/quote/:<%- idx %>"><%- idx+1 %></a>
+        
+    <% }) %>
+
+<%- include('./partials/quote_reference_foot') %>
+
+<%- include('./partials/foot') %>
