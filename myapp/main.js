@@ -49,6 +49,14 @@ app.get('/quote/:id', function (req, res) {
     })
 })
 
+app.get('/offline', function (req, res) {
+    res.render('offline', {
+        pageTitle: 'offline',
+        quote: {text: 'Life is what happens, when you go offline...'},
+        quote_text_fontsize: '1.75em'
+    })
+})
+
 
 app.set('port', process.env.PORT || 8000)
 
