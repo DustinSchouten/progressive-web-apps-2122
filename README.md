@@ -38,10 +38,32 @@ Om deze drie packages te installeren voer je de volgende commando's uit:
 
 9. Wanneer ik mijn app wil laten runnen, moet ik telkens het commando `node main.js` uitvoeren. Doordat dit het startpunt van mijn applicatie is, heb ik in het package.json bij "scripts" de regel `"start": "node main.js"` tussen regelnummer 6 en 7 toegevoegd. Hiermee kan ik de app laten runnen d.m.v. het commando `npm start`.
 
-10. Ik heb een map genaamd 'views' aangemaakt al mijn ejs-bestanden.
+10. Ik heb een map genaamd 'views' aangemaakt voor al mijn ejs-bestanden.
 
 11. Ik heb een map genaamd 'public' aangemaakt voor de css en de images.
 
 Het volledige project is te vinden op mijn github-pagina: 'https://github.com/DustinSchouten/progressive-web-apps-2122'.
 
+## Hoe werkt het server-side-rendering in mijn applicatie:
+Zoals ik hierboven al eerder heb beschreven, heb ik mijn app doormiddel van server-side-rendering de HTML-bestanden laten genereren. Hierbij wordt er gebruikgemaakt van een template engine genaamd ejs. Een template engine maakt het mogelijk om variabelen in een template-bestand om te zetten in HTML-content die als HTML-bestand naar de client kan worden gestuurd. 
 
+Het framework dat gebruikt wordt om onder andere de ejs-bestanden te prepareren is een Express-applicatie. Express is een webapplicatie framework van Node.js dat gebruikt wordt voor het bouwen van web- en mobiele applicaties. Met deze package kun je met de JavaScriptregel 'const app = express()' een Express-applicatie definiëren. Met de regel 'app.set('view engine', 'ejs')' wordt vervolgens de view-engine (template-engine) op ejs gedefinieerd.
+
+Met de applicatie kun je vervolgens routes aanmaken waarmee je voor iedere pagina in je webapplicatie kunt bepalen welke data er gerenderd wordt.
+ 
+## Waarom server-side-rendering:
+Er zijn een aantal redenen om voor dit principe te kiezen:
+
+- De pagina laadt sneller. Bij client-side-rendering moet de browser bij iedere link op de HTML-pagina (zoals CSS- en JavaScriptbestanden maar ook bij images) opnieuw een request naar de server sturen. Op deze manier wordt de webpagina steeds verder opgebouwd. Bij server-side-rendering hoeft de browser maar één request naar de server te sturen. De server rendert vervolgens de volledige pagina inclusief alle CSS en images. Dit zorgt ervoor dat de webpagina sneller aan de gebruiker getoond kan worden.
+
+- De pagina wordt beter indexeerbaar voor zoekmachines. Doordat alle inhoud bij het opvragen van de pagina direct beschikbaar is, kunnen zoekmachines de webpagina beter indexeren. De pagina wordt hierdoor SEO-vriendelijk (Search Engine Optimization).
+
+- Doordat het opbouwen van de pagina op de server gebeurt, kost dit de gebruiker daardoor minder data en is het voor de gebruiker dus goedkoper.
+
+
+
+
+Bronnen:
+- https://www.sdim.nl/helpcentrum/begrippenlijst/server-side-rendering/#:~:text=Voordelen%20van%20server%2Dside%20rendering%20zijn%3A,klaar%20is%20om%20te%20renderen.
+- https://lightbase.nl/kennisbank/techniek/wat-is-server-side-rendering
+- https://expressjs.com/en/guide/using-template-engines.html#:~:text=A%20template%20engine%20enables%20you,to%20design%20an%20HTML%20page.
