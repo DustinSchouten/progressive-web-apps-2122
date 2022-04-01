@@ -1,4 +1,4 @@
-# Progressive Web Apps
+# Progressive Web App
 
 ## Installatie-instructies progressive web app:
 Hieronder heb ik in stappen beschreven hoe ik mijn progressive web app heb geïmplementeerd en hoe ik de server (localhost) werkend heb gekregen waar de web app op draait.
