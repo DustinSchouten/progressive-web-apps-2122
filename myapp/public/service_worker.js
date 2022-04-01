@@ -1,10 +1,6 @@
 const CORE_CACHE_NAME = 'core-cache';
 const CORE_ASSETS = [
-    '/',
-    '/images/icon.png',
-    '/images/image_skeleton.png',
     '/styles/style.css',
-    '/manifest.json',
     '/offline'
 ];
 
@@ -23,8 +19,6 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(function(response) {
-            // console.log(event.request.url)
-            // console.log(response)
             return response || fetch(event.request);
         })
         .catch(function(err) {

@@ -60,10 +60,16 @@ Er zijn een aantal redenen om voor dit principe te kiezen:
 
 - Doordat het opbouwen van de pagina op de server gebeurt, kost dit de gebruiker daardoor minder data en is het voor de gebruiker dus goedkoper.
 
+## De service worker:
+Deze progressive web app beschikt over een service worker waarvan ik de functionaliteiten in het bestand 'service_worker.js' gemaakt heb. Een service worker is een JavaScript bestand dat afzonderlijk van de browser wordt uitgevoerd. Een service worker bevindt zich als het ware tussen de client en de server. Wanneer de client een request naar de server wilt sturen, gaat dit request dus via de service worker naar de server. Wanneer de server een response terugstuurt naar de service worker, slaat deze de bestanden in de cache, voordat hij de bestanden terugstuurt aan de client. 
 
+De kracht van de service worker is dat je het kan laten bepalen welke pagina aan de client getoond wordt op basis van een bepaalde request en een bijbehorende response. Op die manier kun je de service worker ook een zelf ontwikkelde offline-pagina laten terugsturen als de bestanden van deze pagina in de cache opgeslagen zijn. Dat is wat ik in mijn webapplicatie heb geïmplementeerd doormiddel van een offline-quote. Ik heb bepaald dat enkel de bestanden worden gecached die nodig zijn voor de offline-pagina. Voor de rest heb ik ervoor gezorgd dat de service worker gewoon de juiste bestanden levert die bij het request horen op het moment dat de gebruiker wel online is.
 
+Hieronder heb ik doormiddel van een activity diagram uitgelegd hoe de workflow van mijn web app werkt:
+![](activity_diagram.png)
 
-Bronnen:
+## Bronnen:
 - https://www.sdim.nl/helpcentrum/begrippenlijst/server-side-rendering/#:~:text=Voordelen%20van%20server%2Dside%20rendering%20zijn%3A,klaar%20is%20om%20te%20renderen.
 - https://lightbase.nl/kennisbank/techniek/wat-is-server-side-rendering
 - https://expressjs.com/en/guide/using-template-engines.html#:~:text=A%20template%20engine%20enables%20you,to%20design%20an%20HTML%20page.
+- https://developers.google.com/web/ilt/pwa/introduction-to-service-worker
