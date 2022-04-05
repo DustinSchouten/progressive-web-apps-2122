@@ -1,0 +1,17 @@
+{
+    "name": "FDND Web design quotes progressive web app",
+    "short_name": "WebQuotesApp!",
+    "description": "Een progressive web app om quotes op het gebied van webdesign te tonen aan gebruikers die op zoek zijn naar inspiratie.",
+    "theme_color": "#369B93",
+    "background_color": "#369B93",
+    "display": "standalone",
+    "orientation": "landscape",
+    "start_url": "/?homescreen=true",
+    "icons": [
+        {
+            "src": "/images/icon.png",
+            "sizes": "468x468",
+            "type": "image/png"
+        }
+    ]
+}

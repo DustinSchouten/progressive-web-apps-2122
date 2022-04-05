@@ -68,8 +68,26 @@ De kracht van de service worker is dat je het kan laten bepalen welke pagina aan
 Hieronder heb ik doormiddel van een activity diagram uitgelegd hoe de workflow van mijn web app werkt:
 ![](activity_diagram.png)
 
+## Toegepaste optimalisaties
+Op de performance van mijn progressive web app te verbeteren, heb ik de volgende optimalisaties toegepast:
+
+### font-display:swap
+In mijn web app maak ik gebruik van een geïmporteerd font van google fonts. Dit zorgt ervoor dat het tijd in beslag neemt om dit font in te laden. In mijn CSS-bestand heb ik daarom de regel `font-display:swap` toegevoegd. Dit zorgt ervoor dat de content, op het moment dat het font nog niet geladen is, alsnog wordt getoond d.m.v. een standaardfont. Wanneer het font alsnog geladen is, wordt er 'geswapped', oftewel gewisseld, naar het geïmporteerde font.
+
+### Minifying van HTML, CSS en JavaScript
+Om de bestandsgroottes van al mijn HTML-, CSS- en JavaScriptbestanden te verkleinen, heb ik deze geminified. Dit betekent dat alle onnodige tekens uit het bestand verwijderd worden, zoals spaties en enters. Want hoe kleiner de bestandsgroottes zijn, hoe minder tijd het kost deze te laden.
+
+### Minimaliseren van JavaScript op de client
+Ook heb ik er tijdens het ontwikkelen van de web app voor gezorgd om zo min mogelijk JavaScript op de client uit te hoeven voeren. Het enige (benodigde) beetje code dat client-side wordt uitgevoerd is het registreren van de service worker.
+
+### Gebruik van caching headers voor caching
+Met het gebruik van caching headers kan worden bepaald op welke manier caching plaats kan vinden. Dit zorgt ervoor dat er niet telkens een request naar de server plaats hoeft te vinden. In plaats daarvan kan er in de cache gekeken worden welke bestanden er al beschikbaar zijn. Met caching headers kun je de regel `res.set('Cache-control', 'public, max-age=SECONDS')` aan de Express app meegeven. Met de parameter `public` kun je aangeven dat de response in alle caches die het tegenkomt opgeslagen mag worden. Met de parameter `max-age` kun je aangeven hoe lang het response in de cache bewaard mag worden. Het aantal seconden heb ik in mijn app op 2628000 (precies één maand) gezet, omdat ik er niet van uit ga dat de API waaruit de quotes worden opgehaald snel zal veranderen.
+
 ## Bronnen:
 - https://www.sdim.nl/helpcentrum/begrippenlijst/server-side-rendering/#:~:text=Voordelen%20van%20server%2Dside%20rendering%20zijn%3A,klaar%20is%20om%20te%20renderen.
 - https://lightbase.nl/kennisbank/techniek/wat-is-server-side-rendering
 - https://expressjs.com/en/guide/using-template-engines.html#:~:text=A%20template%20engine%20enables%20you,to%20design%20an%20HTML%20page.
 - https://developers.google.com/web/ilt/pwa/introduction-to-service-worker
+- https://www.willpeavy.com/tools/minifier/
+- https://www.minifier.org/
+- https://regbrain.com/article/cache-headers-express-js
