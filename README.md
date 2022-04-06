@@ -2,7 +2,7 @@
 
 Link naar live demo: https://pwa500895931.herokuapp.com/
 
-## Installatie-instructies progressive web app:
+## Installatiestappen progressive web app:
 Hieronder heb ik in stappen beschreven hoe ik mijn progressive web app heb geïmplementeerd en hoe ik de server (localhost) werkend heb gekregen waar de web app op draait.
 
 1. Ik heb node.js gedownload en geïnstalleerd.
