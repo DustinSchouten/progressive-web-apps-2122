@@ -29,26 +29,3 @@ self.addEventListener('fetch', function(event) {
     )
     
 });
-
-
-
-
-
-// self.addEventListener('fetch', function(event) {
-//     event.respondWith(
-//         caches.match(event.request).then(function(response) {
-//             // console.log(event.request.url)
-//             // console.log(response)
-//             return response || fetch(event.request);
-//         })
-//         .catch(function(err) {
-//             caches.match(event.request).then(function(response) {
-//                 console.log('ServiceWorker registration failed: ', err);
-//                 console.log(event.request)
-//                 console.log(event.request.url)
-//                 return caches.match('/offline');
-//             })
-//         })
-//     )
-    
-// });

@@ -85,6 +85,10 @@ Ook heb ik er tijdens het ontwikkelen van de web app voor gezorgd om zo min moge
 ### Gebruik van caching headers voor caching
 Met het gebruik van caching headers kan worden bepaald op welke manier caching plaats kan vinden. Dit zorgt ervoor dat er niet telkens een request naar de server plaats hoeft te vinden. In plaats daarvan kan er in de cache gekeken worden welke bestanden er al beschikbaar zijn. Met caching headers kun je de regel `res.set('Cache-control', 'public, max-age=SECONDS')` aan de Express app meegeven. Met de parameter `public` kun je aangeven dat de response in alle caches die het tegenkomt opgeslagen mag worden. Met de parameter `max-age` kun je aangeven hoe lang het response in de cache bewaard mag worden. Het aantal seconden heb ik in mijn app op 2628000 (precies één maand) gezet, omdat ik er niet van uit ga dat de API waaruit de quotes worden opgehaald snel zal veranderen.
 
+### Resizen van images
+Images (van de quotebedenkers) zorgen voor een zeer grote laadtijd vanwege hun bestandsgrootte. Daarom heb ik geprobeerd om de opgehaalde images te verkleinen met het gebruik van `srcset` bij de `<img>` tag. Het probleem was alleen dat de url's van de images via een API worden opgehaald en dat iedere url een andere opbouw had. Hierdoor was het niet te doen om voor iedere url apart een smallere versie op te vragen.
+Om dit probleem voor nu op te lossen, heb ik alle verschillende images (ongeveer 10) gedownload en apart geresized naar maximaal 100px breed of 100px lang. De images hebben als bestandsnaam het id, die bij `authorId` hoort. Deze images gebruik ik vervolgens om in de web app te tonen.
+
 ## Bronnen:
 - https://www.sdim.nl/helpcentrum/begrippenlijst/server-side-rendering/#:~:text=Voordelen%20van%20server%2Dside%20rendering%20zijn%3A,klaar%20is%20om%20te%20renderen.
 - https://lightbase.nl/kennisbank/techniek/wat-is-server-side-rendering
@@ -93,3 +97,4 @@ Met het gebruik van caching headers kan worden bepaald op welke manier caching p
 - https://www.willpeavy.com/tools/minifier/
 - https://www.minifier.org/
 - https://regbrain.com/article/cache-headers-express-js
+- https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/
